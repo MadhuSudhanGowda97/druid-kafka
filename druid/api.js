@@ -16,10 +16,6 @@ app.post('/create', (req, res) => {
     headers: {'content-type': 'application/json'},
     body: JSON.stringify(ingestionSpec)
   }, (error, response) => {
-    if (response.statusCode !== 200) {
-      res.send(response);
-      return;
-    }
     res.status(200).send(response);
   });
     }
