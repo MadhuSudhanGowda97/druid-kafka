@@ -8,7 +8,7 @@ const nativequeryUrl = 'http://localhost:8888/druid/v2/?pretty';
 
  app.use(express.json());
 
-app.post('/create', (req, res) => {
+app.post('/createdatasource', (req, res) => {
     try{
         const ingestionSpec = req.body;
   request.post({
@@ -65,7 +65,3 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
 
-export {
-  request,
-  app
-}
