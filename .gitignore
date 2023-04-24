@@ -1,0 +1,6 @@
+producer.js
+druidapi.js
+indexing.js
+kafka-ingestionspec.json
+spec.json
+node_modules
