@@ -47,7 +47,7 @@ describe('POST /create', () => {
         const res = await request(app)
           .post('/createdatasource')
           .send(ingestionSpec);
-    
+          
         expect(res.statusCode).to.equal(500);
       });
     })
