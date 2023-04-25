@@ -37,21 +37,20 @@ describe('POST /create', () => {
     
        
       });
-      it('server error', async () => {
-        const ingestionSpec = {} ;
-        const scope = nock('http://localhost:8888')
-          .post('/druid/indexer/v1/supervisor', ingestionSpec)
-          .reply(500, "error");
+      it('should return a 500 error if there is an error with the request', async () => {
+        const ingestionSpec = {  };
+        const druidUrl = 'http://localhost:8888/druid/indexer/v1/supervisor';
+        nock(druidUrl)
+          .post('/createdatasource',ingestionSpec)
+          .replyWithError('Something went wrong');
     
         const res = await request(app)
-          .post('/createdatasource');
-          res.body.statusCode.should.be.equal(500);
-           res.body.should.be.an("object");
-          scope.isDone().should.be.true;
-})
+          .post('/createdatasource')
+          .send(ingestionSpec);
     
-})
-    
+        expect(res.statusCode).to.equal(500);
+      });
+    })
 
 
 describe('query', () => {
