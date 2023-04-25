@@ -39,9 +39,9 @@ describe('POST /create', () => {
       });
       it('should return a 500 error if there is an error with the request', async () => {
         const ingestionSpec = {  };
-        const druidUrl = 'http://localhost:8888/druid/indexer/v1/supervisor';
+        const druidUrl = 'http://localhost:8888';
         nock(druidUrl)
-          .post('/createdatasource',ingestionSpec)
+          .post('/druid/indexer/v1/supervisor',ingestionSpec)
           .replyWithError('Something went wrong');
     
         const res = await request(app)
